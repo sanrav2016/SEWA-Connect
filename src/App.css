@@ -1,38 +1,378 @@
-.App {
-  text-align: center;
+.loader-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  opacity: 1;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.loader-hidden {
+  top: -100%;
+  opacity: 0;
+  transition: all 1s ease-out 500ms;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.loader-gone {
+  display: none;
+}
+
+.loader {
+  border: 10px solid var(--yellow);
+  border-top: 10px solid var(--purple);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: loader-spin 1.5s linear infinite;
+}
+
+@keyframes loader-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.sign-in-container {
+  display: grid;
+  grid-template-columns: auto 350px;
+  height: 100%;
+}
+
+.sign-in-container .display-panel {
+  background-color: var(--aqua);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sign-in-container .main-panel {
+  position: relative;
+  background-color: var(--midnight);
+}
+
+.sign-in-container .main-panel img {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.sign-in-container .main-panel .inputs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sign-in-container .main-panel .section-wrapper {
+  width: 100%;
+}
+
+.sign-in-container .main-panel .input-wrapper {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  box-sizing: border-box;
+  gap: 12px;
+}
+
+.sign-in-container .main-panel .input-wrapper input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.sign-in-container .main-panel .input-wrapper .icon {
+  color: var(--grey);
+}
+
+.sign-in-container .main-panel .error-text {
+  color: coral;
+  font-size: 14px;
+  font-weight: lighter;
+  align-self: start;
+}
+
+.sign-in-container .main-panel button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  background-color: var(--yellow);
+  border-bottom: 4px solid var(--tan);
+  font-size: 15px;
+  font-weight: bold;
+  transition: background-color 300ms;
+}
+
+.sign-in-container .main-panel button:hover, .sign-in-container .main-panel button:focus {
+  background-color: var(--aqua);
+  cursor: pointer;
+}
+
+.sign-in-container .main-panel button:disabled {
+  background-color: #cccccc;
+  color: #777777;
+}
+
+.sign-in-container .main-panel .inputs-container a {
+  color: var(--grey);
+  font-size: 14px;
+}
+
+@media screen and (max-width: 450px) {
+  .sign-in-container {
+    grid-template-columns: 0 100%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
+  display: grid;
+  grid-template-columns: fit-content(225px) auto;
+  grid-template-rows: 60px auto;
+  height: 100%;
+  font-size: 15px;
+  transition: grid-template-columns 500ms;
+}
+
+.app-container .sidebar img {
+  padding: 40px;
+  width: 130px;
+  height: 130px;
+}
+
+.app-container .sidebar {
+  border-left: 10px solid var(--midnight);
+  background-color: var(--grey);
+  grid-column: 1/2;
+  grid-row: 1/3;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 0;
+  transition: margin-left 500ms ease-out;
+}
+
+.app-container .sidebar-collapsed {
+  margin-left: -225px;
+}
+
+.app-container .sidebar .link-container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  row-gap: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.app-container .sidebar .link-wrapper {
+  width: 100%;
   color: white;
+  background-color: var(--purple);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  gap: 10px;
+  transition: background-color 300ms;
 }
 
-.App-link {
-  color: #61dafb;
+.app-container .sidebar .link-wrapper:hover {
+  background-color: var(--midnight);
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.app-container .sidebar .link-wrapper-selected {
+  color: black;
+  background-color: var(--yellow);
+  border-right: 10px solid var(--tan);
+  transition: background-color 300ms, color 300ms;
+}
+
+.app-container .sidebar .link-wrapper-selected:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.app-container .sidebar .user-info-container {
+  margin-top: auto;
+  display: flex;
+  padding: 10px;
+  background-color: var(--purple);
+  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  color: white;
+  border-top: 3px solid var(--grey);
+}
+
+.app-container .sidebar .user-info-container .user-info-text {
+  flex: 4;
+  transition: color 300ms;
+}
+
+.app-container .sidebar .user-info-container .user-info-text:hover {
+  cursor: pointer;
+  color: var(--aqua);
+}
+
+.app-container .sidebar .user-info-container .user-info-text span:nth-child(1) {
+  display: block;
+  font-weight: bold;
+}
+
+.app-container .sidebar .user-info-container .user-info-text span:nth-child(2) {
+  font-size: 13px;
+}
+
+.app-container .sidebar .user-info-container .logout-icon {
+  flex: 1;
+  color: var(--grey);
+  transition: transform 300ms, color 300ms;
+}
+
+.app-container .sidebar .user-info-container .logout-icon:hover {
+  color: var(--aqua);
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.app-container .headerbar {
+  background-color: var(--aqua);
+  border-bottom: 10px solid var(--yellow);
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-container .headerbar .menu-icon {
+  padding: 15px;
+  transition: transform 300ms;
+}
+
+.app-container .headerbar .menu-icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.app-container .content {
+  padding: 30px;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  overflow-y: scroll;
+}
+
+.app-container .content .header {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.app-container .content .subheading {
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.app-container .content .content-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.app-container .content .form-section select, .app-container .content .form-section input {
+  padding: 7px;
+  border-bottom: 1px solid grey;
+  width: 250px;
+  font-size: 15px;
+}
+
+.app-container .content .form-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.app-container .content .form-container .form-button {
+  width: 200px;
+  border: 1px solid grey;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.app-container .content .form-container .form-button:hover {
+  background: #eee;
+}
+
+.app-container .content .form-container .form-section label {
+  display: block;
+  font-size: 13px;
+}
+
+.app-container .content .form-container .date-time-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.app-container .content .form-container .date-object {
+  border-radius: 7px;
+  padding: 15px;
+  border: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app-container .content .form-container .date-object .date-picker {
+  width: 100%;
+}
+
+.app-container .content .form-container .date-object .time-picker-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.app-container .content .form-container .date-object .time-picker-container .time-picker {
+  flex: 1;
+}
+
+@media screen and (max-width: 850px) {
+  .app-container .sidebar {
+    position: absolute;
+    top: 0;
+    left: -225px;
+    height: 100%;
+    z-index: 10;
+    transition: left 500ms ease-out;
+    margin-left: 0;
   }
-  to {
-    transform: rotate(360deg);
+  .app-container .sidebar .user-info-container {
+    position: absolute;
+    bottom: 0;
+  }
+  .app-container .sidebar-collapsed {
+    margin-left: 0;
+    left: 0;
+  }
+  .app-container .headerbar .headerbar-right .search-wrapper {
+    display: none;
   }
 }

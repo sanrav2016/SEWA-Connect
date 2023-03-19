@@ -1,13 +1,29 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@300;800&display=swap");
+
+html, body {
+  width: 100%;
+  height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Karla", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  font-weight: 300;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input, button, textarea, select {
+  font-family: "Karla", sans-serif;
+  outline: none;
+  border: none;
+  background-color: white;
+  font-weight: 300;
+}
+
+:root {
+  --aqua: #a0eade;
+  --midnight: #1d263b;
+  --yellow: #c5e063;
+  --tan: #9f997d;
+  --purple: #342f60;
+  --grey: #5c6784;
 }
